@@ -8,8 +8,9 @@ curl -sSL https://packages.microsoft.com/config/ubuntu/18.04/prod.list | sudo te
 curl -sSL https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
 
 # install packages
-echo "----- install packages -----"
+echo "----- update package database -----"
 sudo apt-get update
+echo "----- install packages -----"
 sudo apt install -y libk4a1.3-dev libk4abt1.0-dev k4a-tools=1.3.0 
 # sudo apt install -y ros-foxy-joint-state-publisher
 pip3 install xacro
