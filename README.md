@@ -33,8 +33,9 @@ For information on how to contribute, please see our [contributing guide](CONTRI
 
 ## Building
 
-The Azure Kinect ROS Driver uses colcon to build. For instructions on how to build the project please see the 
-[building guide](docs/building.md).
+To build on Ubuntu 20.04 with ROS2 Galactic see the [Ubuntu 20.04 / ROS2 Galactic install & build guide here](docs/building-ubuntu2004.md).
+
+For other configurations, follow instructions on how to build the project [here](docs/building.md).
 
 ## Join Our Developer Program
 
