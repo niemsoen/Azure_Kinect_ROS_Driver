@@ -6,6 +6,9 @@ This repository uses the [Azure Kinect Sensor SDK](https://github.com/microsoft/
 
 [![Build Status](https://dev.azure.com/ms/Azure_Kinect_ROS_Driver/_apis/build/status/microsoft.Azure_Kinect_ROS_Driver?branchName=melodic)](https://dev.azure.com/ms/Azure_Kinect_ROS_Driver/_build/latest?definitionId=166&branchName=melodic)
 
+## TL;DR
+Click [here](docs/building-ubuntu2004.md) for build & run instructions on **Ubuntu 20.04 /w ROS2 galactic**.
+
 ## Features
 
 This ROS node outputs a variety of sensor data, including:
@@ -31,11 +34,11 @@ This code is provided as a starting point for using the Azure Kinect Developer K
 
 For information on how to contribute, please see our [contributing guide](CONTRIBUTING.md).
 
-## Building
+## Building & Run
 
 To build on Ubuntu 20.04 with ROS2 Galactic see the [Ubuntu 20.04 / ROS2 Galactic install & build guide here](docs/building-ubuntu2004.md).
 
-For other configurations, follow instructions on how to build the project [here](docs/building.md).
+For other platforms, follow instructions on how to build the project [here](docs/building.md).
 
 ## Join Our Developer Program
 
