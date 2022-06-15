@@ -2,7 +2,28 @@
 Tested on **Ubuntu 20.04 with ROS2 Galactic**
 
 ## Prerequisites
-- Install Azure Kinect SDK (as seen [here](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/issues/1263#issuecomment-710698591))
+
+- Install xacro
+
+        pip3 install xacro
+- Joint state publisher
+
+        sudo apt install ros-galactic-joint-state-publisher
+
+- Azure Kinect SDK  
+    Run auto install script that detects your OS and processore architecture and installs the driver using dpkg.
+
+        cd /Azure_Kinect_ROS_Driver
+        ./install-dependencies_auto-dist.sh
+
+    sources:
+    - how to https://github.com/microsoft/Azure-Kinect-Sensor-SDK/issues/1263#issuecomment-758810804
+    - .deb files here https://packages.microsoft.com/ubuntu/18.04/prod/pool/main/k/k4a-tools/
+
+    <details>
+    <summary><b>Install Azure Kinect SDK using apt (unstable, not recommended)</b></summary>
+    as seen [here](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/issues/1263#issuecomment-710698591)
+
     - add microsoft package repository
             
             curl -sSL https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
@@ -29,17 +50,10 @@ Tested on **Ubuntu 20.04 with ROS2 Galactic**
             k4aviewer
         *Open Device -> Start*  
         you can ignore the MPEG decoding error message, see [here](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/issues/672) for further informationt
+    </details>
+  
 
-    - (Alternative, not tested) Azure Kinect alternative install with dpkg
-        - how to https://github.com/microsoft/Azure-Kinect-Sensor-SDK/issues/1263#issuecomment-758810804
-        - .deb files here https://packages.microsoft.com/ubuntu/18.04/prod/pool/main/k/k4a-tools/
 
-- Install xacro
-
-        pip3 install xacro
-- Joint state publisher
-
-        sudo apt install ros-foxy-joint-state-publisher
 
 ## Download Source
 ```bash
