@@ -7,7 +7,7 @@ arch=$(uname -m)
 echo "--------- $arch detected"
 
 if [[ $os = "focal" ]]; then
-  echo "--------- Ubuntu 20.04 detected"
+  echo "--------- Ubuntu 20.04 focal detected"
   
   if [[ $arch = "x86_64" ]]; then
     # Special hack for Azure Kinect Framework not available on Ubuntu 20.04
@@ -24,6 +24,8 @@ if [[ $os = "focal" ]]; then
       echo 'libk4a1.4 libk4a1.4/accept-eula select true' | sudo debconf-set-selections
       sudo dpkg -i /tmp/libk4a1.4_1.4.1_amd64.deb
       sudo dpkg -i /tmp/libk4a1.4-dev_1.4.1_amd64.deb
+    else
+      echo "--------- Dependencies already satisfied"
     fi
   
   elif [[ $arch = "aarch64" ]]; then
@@ -35,14 +37,17 @@ if [[ $os = "focal" ]]; then
       echo 'libk4a1.4 libk4a1.4/accept-eula select true' | sudo debconf-set-selections
       sudo dpkg -i /tmp/libk4a1.4_1.4.1_arm64.deb
       sudo dpkg -i /tmp/libk4a1.4-dev_1.4.1_arm64.deb
+    else
+      echo "--------- Dependencies already satisfied"
     fi
   
   else
-    echo "--------- $arch not recognized"
+    echo "--------- Sorry, architecture $arch not supported"
+    exit
   fi
 
-else
-  echo "--------- Ubuntu 18.04 detected"
+elif [[ $arch = "bionic" ]]; then
+  echo "--------- Ubuntu 18.04 bionic detected"
   # lib kinect
   curl -sSL https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
   sudo apt-get install -y software-properties-common
@@ -51,6 +56,11 @@ else
   echo 'libk4a1.4 libk4a1.4/accepted-eula-hash string 0f5d5c5de396e4fee4c0753a21fee0c1ed726cf0316204edda484f08cb266d76' | sudo debconf-set-selections
   echo 'libk4a1.4 libk4a1.4/accept-eula select true' | sudo debconf-set-selections
   sudo apt-get install -y --no-install-recommends libk4a1.4-dev
+else
+  echo "--------- Sorry, no supported OS detected"
+  exit
 fi
 
-echo "Done"
+echo "--------- Setting up udev rules"
+curl -s https://raw.githubusercontent.com/microsoft/Azure-Kinect-Sensor-SDK/develop/scripts/99-k4a.rules >> 99-k4a.rules
+sudo mv 99-k4a.rules /etc/udev/rules.d/
