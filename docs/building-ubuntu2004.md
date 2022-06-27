@@ -70,15 +70,15 @@ colcon build
 ````
 
 ## Run Driver
-### Driver only
+### Driver with existing robot only
 ````bash
 source install/setup.bash
-ros2 launch azure_kinect_ros_driver driver.launch.py
+ros2 launch azure_kinect_ros_driver driver_vanilla_headless.launch.py
 ````
-### Driver with RViz Display
+### Standalone driver with RViz Display
 ````bash
 source install/setup.bash
-ros2 launch azure_kinect_ros_driver rviz_driver.launch.py
+ros2 launch azure_kinect_ros_driver driver_standalone_rviz.launch.py
 ````
 
 # Further Resources
