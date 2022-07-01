@@ -1,6 +1,8 @@
 #!/bin/bash
 # https://github.com/microsoft/Azure-Kinect-Sensor-SDK/issues/1263#issuecomment-983804473
 
+echo "--------- Azure Kinect Camera Driver: Dependencies"
+
 hash lsb_release 2>/dev/null || { echo "ERROR: tool lsb_release needed for analysis"; exit 1; }
 os=$(lsb_release -cs)
 arch=$(uname -m)
