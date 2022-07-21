@@ -25,7 +25,8 @@
   <depend>geometry_msgs</depend>
   <depend>angles</depend>
   <depend>cv_bridge</depend>
-  <depend>K4A</depend>
+  <!--Need to decide on how to handle this regarding the install script -->
+  <!-- <depend>K4A</depend> -->
 
   <export>
     <build_type>ament_cmake</build_type>
