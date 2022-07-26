@@ -248,7 +248,7 @@ K4AROSDevice::K4AROSDevice()
     // others can subscribe to 'rgb/image_raw' with compressed_image_transport.
     // This technique is described in:
     // http://wiki.ros.org/compressed_image_transport#Publishing_compressed_images_directly
-    rgb_jpeg_publisher_ = this->create_publisher<CompressedImage>("rgb/image_raw/compressed", 1);
+    rgb_jpeg_publisher_ = this->create_publisher<CompressedImage>("rgb/image_raw/compressed", rclcpp::SensorDataQoS());
   }
   else if (params_.color_format == "bgra")
   {
@@ -282,7 +282,7 @@ K4AROSDevice::K4AROSDevice()
   imu_orientation_publisher_ = this->create_publisher<Imu>("imu", 200);
 
   if (params_.point_cloud || params_.rgb_point_cloud) {
-    pointcloud_publisher_ = this->create_publisher<PointCloud2>("points2", 1);
+    pointcloud_publisher_ = this->create_publisher<PointCloud2>("points2", rclcpp::SensorDataQoS());
   }
 
 #if defined(K4A_BODY_TRACKING)
