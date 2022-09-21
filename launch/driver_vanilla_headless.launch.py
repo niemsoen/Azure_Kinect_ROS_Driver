@@ -51,7 +51,7 @@ def generate_launch_description():
         description="Generate a point cloud from depth data. Requires depth_enabled"),
     DeclareLaunchArgument(
         'point_cloud_topic',
-        default_value="/depth/points",
+        default_value="depth/points",
         description="Name for the point cloud topic"),
     DeclareLaunchArgument(
         'rgb_point_cloud',
