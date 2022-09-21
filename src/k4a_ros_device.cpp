@@ -65,7 +65,6 @@ K4AROSDevice::K4AROSDevice()
   this->declare_parameter("color_resolution");
   this->declare_parameter("fps");
   this->declare_parameter("point_cloud");
-  this->declare_parameter("point_cloud_topic");
   this->declare_parameter("rgb_point_cloud");
   this->declare_parameter("point_cloud_in_depth_frame");
   this->declare_parameter("required");
@@ -283,8 +282,7 @@ K4AROSDevice::K4AROSDevice()
   imu_orientation_publisher_ = this->create_publisher<Imu>("imu", 200);
 
   if (params_.point_cloud || params_.rgb_point_cloud) {
-    const std::string point_cloud_topic = this->get_parameter("point_cloud_topic").as_string();
-    pointcloud_publisher_ = this->create_publisher<PointCloud2>(point_cloud_topic, 1);
+    pointcloud_publisher_ = this->create_publisher<PointCloud2>("points2", 1);
   }
 
 #if defined(K4A_BODY_TRACKING)

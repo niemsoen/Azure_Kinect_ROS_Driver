@@ -86,10 +86,6 @@ def generate_launch_description():
         default_value="true",
         description="Generate a point cloud from depth data. Requires depth_enabled"),
     DeclareLaunchArgument(
-        'point_cloud_topic',
-        default_value="depth/points",
-        description="Name for the point cloud topic"),
-    DeclareLaunchArgument(
         'rgb_point_cloud',
         default_value="true",
         description="Colorize the point cloud using the RBG camera. Requires color_enabled and depth_enabled"),
@@ -154,7 +150,6 @@ def generate_launch_description():
             {'color_resolution': launch.substitutions.LaunchConfiguration('color_resolution')},
             {'fps': launch.substitutions.LaunchConfiguration('fps')},
             {'point_cloud': launch.substitutions.LaunchConfiguration('point_cloud')},
-            {'point_cloud_topic': launch.substitutions.LaunchConfiguration('point_cloud_topic')},
             {'rgb_point_cloud': launch.substitutions.LaunchConfiguration('rgb_point_cloud')},
             {'point_cloud_in_depth_frame': launch.substitutions.LaunchConfiguration('point_cloud_in_depth_frame')},
             {'sensor_sn': launch.substitutions.LaunchConfiguration('sensor_sn')},
