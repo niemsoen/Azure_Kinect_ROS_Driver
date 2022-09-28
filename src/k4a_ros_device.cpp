@@ -65,6 +65,7 @@ K4AROSDevice::K4AROSDevice()
   this->declare_parameter("color_resolution");
   this->declare_parameter("fps");
   this->declare_parameter("point_cloud");
+  this->declare_parameter("point_cloud_topic");
   this->declare_parameter("rgb_point_cloud");
   this->declare_parameter("point_cloud_in_depth_frame");
   this->declare_parameter("required");
