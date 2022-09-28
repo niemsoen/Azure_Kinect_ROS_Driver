@@ -143,6 +143,7 @@ class K4AROSDevice : public rclcpp::Node
 
   // Parameters
   K4AROSDeviceParams params_;
+  std::string point_cloud_topic;
 
   // K4A device
   k4a::device k4a_device_;
