@@ -65,6 +65,7 @@ K4AROSDevice::K4AROSDevice()
   this->declare_parameter("color_resolution");
   this->declare_parameter("fps");
   this->declare_parameter("point_cloud");
+  this->declare_parameter("point_cloud_topic");
   this->declare_parameter("rgb_point_cloud");
   this->declare_parameter("point_cloud_in_depth_frame");
   this->declare_parameter("required");
@@ -282,7 +283,8 @@ K4AROSDevice::K4AROSDevice()
   imu_orientation_publisher_ = this->create_publisher<Imu>("imu", 200);
 
   if (params_.point_cloud || params_.rgb_point_cloud) {
-    pointcloud_publisher_ = this->create_publisher<PointCloud2>("points2", 1);
+    point_cloud_topic = this->get_parameter("point_cloud_topic").as_string();
+    pointcloud_publisher_ = this->create_publisher<PointCloud2>(point_cloud_topic, 1);
   }
 
 #if defined(K4A_BODY_TRACKING)
@@ -1148,7 +1150,7 @@ void K4AROSDevice::framePublisherThread()
     // Only create pointcloud when we are using a device or we have a synchronized image.
     // Recordings may not have synchronized captures. In unsynchronized captures skip point cloud.
 
-    if (this->count_subscribers("points2") > 0 &&
+    if (this->count_subscribers(point_cloud_topic) > 0 &&
       (k4a_device_ || (capture.get_color_image() != nullptr && capture.get_depth_image() != nullptr)))
     {
       if (params_.rgb_point_cloud)

@@ -1,13 +1,7 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License.
-
-import os
-import xacro
-from ament_index_python.packages import get_package_share_directory
-
-from launch import LaunchDescription, conditions
-from launch.actions import (DeclareLaunchArgument, GroupAction)
-from launch.substitutions import LaunchConfiguration, Command
+from launch import LaunchDescription
+from launch.actions import DeclareLaunchArgument
 
 import launch.actions
 import launch_ros.actions
@@ -17,6 +11,10 @@ def generate_launch_description():
 
     return LaunchDescription([
 
+    DeclareLaunchArgument(
+        'namespace',
+        default_value="azure",
+        description="Namespace of all topics"),
     DeclareLaunchArgument(
         'depth_enabled',
         default_value="true",
@@ -49,6 +47,10 @@ def generate_launch_description():
         'point_cloud',
         default_value="true",
         description="Generate a point cloud from depth data. Requires depth_enabled"),
+    DeclareLaunchArgument(
+        'point_cloud_topic',
+        default_value="depth/points",
+        description="Name for the point cloud topic"),
     DeclareLaunchArgument(
         'rgb_point_cloud',
         default_value="true",
@@ -105,6 +107,7 @@ def generate_launch_description():
         package='azure_kinect_ros_driver',
         executable='node',
         output='screen',
+        namespace=launch.substitutions.LaunchConfiguration('namespace'),
         parameters=[
             {'depth_enabled': launch.substitutions.LaunchConfiguration('depth_enabled')},
             {'depth_mode': launch.substitutions.LaunchConfiguration('depth_mode')},
@@ -114,6 +117,7 @@ def generate_launch_description():
             {'color_resolution': launch.substitutions.LaunchConfiguration('color_resolution')},
             {'fps': launch.substitutions.LaunchConfiguration('fps')},
             {'point_cloud': launch.substitutions.LaunchConfiguration('point_cloud')},
+            {'point_cloud_topic': launch.substitutions.LaunchConfiguration('point_cloud_topic')},
             {'rgb_point_cloud': launch.substitutions.LaunchConfiguration('rgb_point_cloud')},
             {'point_cloud_in_depth_frame': launch.substitutions.LaunchConfiguration('point_cloud_in_depth_frame')},
             {'sensor_sn': launch.substitutions.LaunchConfiguration('sensor_sn')},
