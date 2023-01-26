@@ -18,6 +18,10 @@ def generate_launch_description():
     return LaunchDescription([
 
     DeclareLaunchArgument(
+        'namespace',
+        default_value="azure",
+        description="Namespace of all topics"),
+    DeclareLaunchArgument(
         'depth_enabled',
         default_value="true",
         description="Enable or disable the depth camera"),
@@ -105,6 +109,7 @@ def generate_launch_description():
         package='azure_kinect_ros_driver',
         executable='node',
         output='screen',
+        namespace=launch.substitutions.LaunchConfiguration('namespace'),
         parameters=[
             {'depth_enabled': launch.substitutions.LaunchConfiguration('depth_enabled')},
             {'depth_mode': launch.substitutions.LaunchConfiguration('depth_mode')},
