@@ -1,5 +1,5 @@
 # Install Azure Kinect Driver
-Tested on **Ubuntu 20.04 with ROS2 Galactic**
+Tested on **Ubuntu 22.04 with ROS2 Humble**
 
 ## Prerequisites
 
@@ -8,7 +8,7 @@ Tested on **Ubuntu 20.04 with ROS2 Galactic**
         pip3 install xacro
 - Joint state publisher
 
-        sudo apt install ros-galactic-joint-state-publisher
+        sudo apt install ros-humble-joint-state-publisher
 
 - Azure Kinect SDK  
     Run auto install script that detects your OS and processore architecture and installs the driver using dpkg.
@@ -39,6 +39,7 @@ Tested on **Ubuntu 20.04 with ROS2 Galactic**
             sudo apt-get update
             sudo apt install libk4a1.3-dev
             sudo apt install libk4abt1.0-dev
+            sudo apt install libsoundio-dev
             sudo apt install k4a-tools=1.3.0
     - set udev rules
 
@@ -57,15 +58,15 @@ Tested on **Ubuntu 20.04 with ROS2 Galactic**
 
 ## Download Source
 ```bash
-git clone https://github.com/microsoft/Azure_Kinect_ROS_Driver.git -b foxy-devel
+git clone https://github.com/microsoft/Azure_Kinect_ROS_Driver.git -b humble
 ```
 
 
 ## Build
 ````bash
-source /opt/ros/galactic/setup.bash
+source /opt/ros/humble/setup.bash
 cd Azure_Kinect_ROS_Driver
-rosdep install -i --from-path src --rosdistro galactic -y
+rosdep install -i --from-path src --rosdistro humble -y
 colcon build
 ````
 
