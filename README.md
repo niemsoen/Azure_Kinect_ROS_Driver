@@ -7,7 +7,7 @@ This repository uses the [Azure Kinect Sensor SDK](https://github.com/microsoft/
 [![Build Status](https://dev.azure.com/ms/Azure_Kinect_ROS_Driver/_apis/build/status/microsoft.Azure_Kinect_ROS_Driver?branchName=melodic)](https://dev.azure.com/ms/Azure_Kinect_ROS_Driver/_build/latest?definitionId=166&branchName=melodic)
 
 ## TL;DR
-Click [here](docs/building-ubuntu2004.md) for build & run instructions on **Ubuntu 20.04 /w ROS2 galactic**.
+Click [here](docs/building-ubuntu2204.md) for build & run instructions on **Ubuntu 22.04 /w ROS2 humble**.
 
 ## Features
 
@@ -36,7 +36,7 @@ For information on how to contribute, please see our [contributing guide](CONTRI
 
 ## Building & Run
 
-To build on Ubuntu 20.04 with ROS2 Galactic see the [Ubuntu 20.04 / ROS2 Galactic install & build guide here](docs/building-ubuntu2004.md).
+To build on Ubuntu 22.04 with ROS2 Humble see the [Ubuntu 22.04 / ROS2 Humble install & build guide here](docs/building-ubuntu2204.md).
 
 For other platforms, follow instructions on how to build the project [here](docs/building.md).
 
