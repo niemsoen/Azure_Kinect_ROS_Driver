@@ -27,7 +27,7 @@ if [[ $os = "jammy" ]]; then
       echo 'libk4a1.4 libk4a1.4/accept-eula select true' | sudo debconf-set-selections
       sudo dpkg -i /tmp/libk4a1.4_1.4.1_amd64.deb || { echo "dpkg install failed"; exit 1; }
       sudo dpkg -i /tmp/libk4a1.4-dev_1.4.1_amd64.deb || { echo "dpkg install failed"; exit 1; }
-      sudo apt install libsoundio-dev #this added line is the only thing different from focal to humble
+      sudo apt-get install -y --no-install-recommends libsoundio-dev #this added line is the only thing different from focal to humble
     else
       echo "--------- Dependencies already satisfied"
     fi
